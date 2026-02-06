@@ -9,185 +9,405 @@
   </head>
 
   <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <div class="preloader-inner">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring"></div>
+        <span class="preloader-text">TAHA</span>
+      </div>
+      <div class="preloader-progress">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Floating Geometric Shapes -->
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+      <div class="shape shape-6"></div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Cursor Spotlight -->
+    <div class="cursor-spotlight" id="cursorSpotlight"></div>
+
+    <!-- Aurora Background -->
+    <div class="aurora">
+      <div class="aurora-beam aurora-1"></div>
+      <div class="aurora-beam aurora-2"></div>
+      <div class="aurora-beam aurora-3"></div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar">
-      <a href="#home" class="logo">Taha<span>.</span></a>
+      <a href="#home" class="logo">
+        <span class="logo-text">Taha</span><span class="logo-dot">.</span>
+      </a>
+      <div class="nav-menu">
+        <ul>
+          <li class="active"><a href="#home" data-text="Home">Home</a></li>
+          <li><a href="#about" data-text="About">About</a></li>
+          <li><a href="#services" data-text="Services">Services</a></li>
+          <li><a href="#projects" data-text="Projects">Projects</a></li>
+          <li><a href="#contact" data-text="Contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle magnetic-btn" title="Toggle Theme">
+          <i class='bx bx-moon'></i>
+        </button>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
       <ul>
-        <li class="active"><a href="#home">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-toggle" title="Toggle Theme">
-        <i class='bx bx-moon'></i>
-      </button>
-    </nav>
-
-    <div class="bars-animation">
-        <div class="bar bar-1"></div>
-        <div class="bar bar-2"></div>
-        <div class="bar bar-3"></div>
-        <div class="bar bar-4"></div>
-        <div class="bar bar-5"></div>
-        <div class="bar bar-6"></div>
     </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
     
     <!-- Home Section -->
     <section class="home" id="home">
-      <div class="home-info">
-        <h3 class="greeting">Hello, I'm</h3>
-        <h1>Taha Sohail</h1>
-        <h2>I'm a 
-            <span class="text-1" data-text="Software Developer">Software Developer</span>
-            <span class="text-2" data-text="C++ Expert">C++ Expert</span>
-            <span class="text-3" data-text="Python Developer">Python Developer</span>
-            <span class="text-4" data-text="Web Developer">Web Developer</span>
-            <span class="text-5" data-text="Quick Learner">Quick Learner</span>
-            <span class="text-6" data-text="Problem Solver">Problem Solver</span>
-        </h2>
-        <p>
+      <div class="home-bg-gradient"></div>
+      <div class="home-info" data-reveal="left">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Available for Freelance</span>
+        </div>
+        <h1 class="glitch-text" data-text="Taha Sohail">Taha Sohail</h1>
+        <div class="typewriter-wrapper">
+          <span class="typewriter-label">I'm a </span>
+          <span class="typewriter" id="typewriter"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+        <p class="hero-description">
           Looking for someone who actually gets the job done? I work with C++, Python, and Web Development
           to build exactly what you need — clean code, fast delivery, and I'll keep revising until you're happy!
         </p>
-
-        <div class="btn-sci">
-            <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn"><i class='bx bxl-whatsapp'></i> Hire Me</a>
+        <div class="hero-cta">
+          <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-primary magnetic-btn">
+            <span class="btn-content"><i class='bx bxl-whatsapp'></i> Hire Me</span>
+            <span class="btn-glare"></span>
+          </a>
+          <a href="#projects" class="btn btn-outline magnetic-btn">
+            <span class="btn-content">View Work</span>
+            <span class="btn-glare"></span>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-count="50">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Projects Done</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="100">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="24">0</span><span class="stat-suffix">h</span>
+            <span class="stat-label">Delivery</span>
+          </div>
         </div>
       </div>
 
-      <div class="home-img">
+      <div class="home-img" data-reveal="right">
         <div class="img-box">
-            <div class="img-item">
-                <img src="image.jpeg" alt="Taha Sohail">
-            </div>
+          <div class="img-border"></div>
+          <div class="img-glow"></div>
+          <div class="img-item">
+            <img src="image.jpeg" alt="Taha Sohail">
+          </div>
+          <div class="orbit-ring">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="orbit-ring orbit-ring-2">
+            <div class="orbit-dot"></div>
+          </div>
         </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="mouse-wheel"></div>
+        </div>
+        <span>Scroll Down</span>
       </div>
     </section>
 
+    <!-- Marquee Banner -->
+    <div class="marquee-section">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>C++ Expert</span><span class="marquee-dot">◆</span>
+          <span>Python Developer</span><span class="marquee-dot">◆</span>
+          <span>Web Development</span><span class="marquee-dot">◆</span>
+          <span>Data Structures</span><span class="marquee-dot">◆</span>
+          <span>Machine Learning</span><span class="marquee-dot">◆</span>
+          <span>Problem Solver</span><span class="marquee-dot">◆</span>
+          <span>Clean Code</span><span class="marquee-dot">◆</span>
+          <span>Fast Delivery</span><span class="marquee-dot">◆</span>
+          <span>C++ Expert</span><span class="marquee-dot">◆</span>
+          <span>Python Developer</span><span class="marquee-dot">◆</span>
+          <span>Web Development</span><span class="marquee-dot">◆</span>
+          <span>Data Structures</span><span class="marquee-dot">◆</span>
+          <span>Machine Learning</span><span class="marquee-dot">◆</span>
+          <span>Problem Solver</span><span class="marquee-dot">◆</span>
+          <span>Clean Code</span><span class="marquee-dot">◆</span>
+          <span>Fast Delivery</span><span class="marquee-dot">◆</span>
+        </div>
+      </div>
+      <div class="marquee-track marquee-reverse">
+        <div class="marquee-content">
+          <span>OOP</span><span class="marquee-dot">◆</span>
+          <span>Algorithms</span><span class="marquee-dot">◆</span>
+          <span>SFML</span><span class="marquee-dot">◆</span>
+          <span>HTML/CSS/JS</span><span class="marquee-dot">◆</span>
+          <span>Automation</span><span class="marquee-dot">◆</span>
+          <span>Data Analysis</span><span class="marquee-dot">◆</span>
+          <span>Graph Theory</span><span class="marquee-dot">◆</span>
+          <span>AI Solutions</span><span class="marquee-dot">◆</span>
+          <span>OOP</span><span class="marquee-dot">◆</span>
+          <span>Algorithms</span><span class="marquee-dot">◆</span>
+          <span>SFML</span><span class="marquee-dot">◆</span>
+          <span>HTML/CSS/JS</span><span class="marquee-dot">◆</span>
+          <span>Automation</span><span class="marquee-dot">◆</span>
+          <span>Data Analysis</span><span class="marquee-dot">◆</span>
+          <span>Graph Theory</span><span class="marquee-dot">◆</span>
+          <span>AI Solutions</span><span class="marquee-dot">◆</span>
+        </div>
+      </div>
+    </div>
+
     <!-- About Section -->
     <section class="about" id="about">
-      <h2 class="section-title">About <span>Me</span></h2>
+      <h2 class="section-title" data-reveal="up">
+        <span class="title-decoration"></span>
+        About <span class="highlight">Me</span>
+        <span class="title-decoration"></span>
+      </h2>
       <div class="about-content">
-        <div class="about-img">
-          <div class="img-box">
+        <div class="about-img" data-reveal="left">
+          <div class="img-box glass-card">
             <img src="image.jpeg" alt="About Me">
+            <div class="img-overlay">
+              <span>2+ Years Experience</span>
+            </div>
           </div>
         </div>
-        <div class="about-text">
-          <h3>A Little Bit About Me</h3>
+        <div class="about-text" data-reveal="right">
+          <div class="about-subtitle">
+            <span class="line"></span>
+            <span>Who I Am</span>
+          </div>
+          <h3>A Passionate Developer Who Delivers Excellence</h3>
           <p>
             I'm a developer who genuinely enjoys writing code that works well and looks clean.
             I've got solid experience in C++, Python, and web development. I take on projects big and small —
             whether it's helping with coursework, building a website, or creating something custom.
             I care about doing things right, and I won't stop until you're happy with the result!
           </p>
+          <div class="skills-bar-container">
+            <div class="skill-bar">
+              <div class="skill-info"><span>C++ / DSA</span><span>95%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="95"></div></div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>Python / ML</span><span>90%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-info"><span>Web Development</span><span>85%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-width="85"></div></div>
+            </div>
+          </div>
           <div class="info-box">
-            <div class="info-item">
-              <span class="info-number">100%</span>
+            <div class="info-item glass-card">
+              <span class="info-number" data-count="100">0</span><span class="info-suffix">%</span>
               <span class="info-text">Client Satisfaction</span>
             </div>
-            <div class="info-item">
+            <div class="info-item glass-card">
               <span class="info-number">24h</span>
               <span class="info-text">Fast Delivery</span>
             </div>
-            <div class="info-item">
-              <span class="info-number">∞</span>
+            <div class="info-item glass-card">
+              <span class="info-number">&infin;</span>
               <span class="info-text">Free Revisions</span>
             </div>
           </div>
-          <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20need%20help%20with%20a%20project." target="_blank" rel="noopener" class="btn"><i class='bx bxl-whatsapp'></i> Get Quote</a>
+          <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20need%20help%20with%20a%20project." target="_blank" rel="noopener" class="btn btn-primary magnetic-btn">
+            <span class="btn-content"><i class='bx bxl-whatsapp'></i> Get Quote</span>
+            <span class="btn-glare"></span>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Tech Stack Floating Icons -->
+    <div class="tech-stack-section" data-reveal="up">
+      <div class="tech-orbit">
+        <div class="tech-icon" style="--i:0" title="C++"><i class='bx bxl-c-plus-plus'></i></div>
+        <div class="tech-icon" style="--i:1" title="Python"><i class='bx bxl-python'></i></div>
+        <div class="tech-icon" style="--i:2" title="HTML5"><i class='bx bxl-html5'></i></div>
+        <div class="tech-icon" style="--i:3" title="CSS3"><i class='bx bxl-css3'></i></div>
+        <div class="tech-icon" style="--i:4" title="JavaScript"><i class='bx bxl-javascript'></i></div>
+        <div class="tech-icon" style="--i:5" title="Git"><i class='bx bxl-git'></i></div>
+      </div>
+    </div>
+
     <!-- Services Section -->
     <section class="services" id="services">
-      <h2 class="section-title">My <span>Services</span></h2>
+      <h2 class="section-title" data-reveal="up">
+        <span class="title-decoration"></span>
+        My <span class="highlight">Services</span>
+        <span class="title-decoration"></span>
+      </h2>
       <div class="services-container">
-        <div class="service-box">
+        <div class="service-box glass-card tilt-card" data-reveal="up" data-delay="0">
+          <div class="service-number">01</div>
           <div class="service-icon">
             <i class='bx bx-code-alt'></i>
           </div>
           <h3>C++ Programming</h3>
           <p>Professional C++ development — OOP, data structures, algorithms, file handling, and complex problem-solving for any project.</p>
-          <a href="mailto:tahasohail85@gmail.com?subject=C++ Programming Service&body=Hi Taha! I need help with C++ programming." class="service-link">Order Now <i class='bx bx-right-arrow-alt'></i></a>
+          <a href="mailto:tahasohail85@gmail.com?subject=C++ Programming Service&body=Hi Taha! I need help with C++ programming." class="service-link">
+            <span>Order Now</span>
+            <i class='bx bx-right-arrow-alt'></i>
+          </a>
+          <div class="service-hover-bg"></div>
         </div>
-        <div class="service-box">
+        <div class="service-box glass-card tilt-card" data-reveal="up" data-delay="100">
+          <div class="service-number">02</div>
           <div class="service-icon">
             <i class='bx bx-brain'></i>
           </div>
           <h3>Python & Machine Learning</h3>
           <p>Python development, automation scripts, data analysis, ML models, and AI-powered solutions tailored to your needs.</p>
-          <a href="mailto:tahasohail85@gmail.com?subject=Python %26 ML Service&body=Hi Taha! I need help with Python or Machine Learning." class="service-link">Order Now <i class='bx bx-right-arrow-alt'></i></a>
+          <a href="mailto:tahasohail85@gmail.com?subject=Python %26 ML Service&body=Hi Taha! I need help with Python or Machine Learning." class="service-link">
+            <span>Order Now</span>
+            <i class='bx bx-right-arrow-alt'></i>
+          </a>
+          <div class="service-hover-bg"></div>
         </div>
-        <div class="service-box">
+        <div class="service-box glass-card tilt-card" data-reveal="up" data-delay="200">
+          <div class="service-number">03</div>
           <div class="service-icon">
             <i class='bx bx-globe'></i>
           </div>
           <h3>Web Development</h3>
           <p>Modern, responsive websites using HTML, CSS, and JavaScript. Portfolios, landing pages, business sites, and web apps.</p>
-          <a href="mailto:tahasohail85@gmail.com?subject=Web Development Service&body=Hi Taha! I need a website developed." class="service-link">Order Now <i class='bx bx-right-arrow-alt'></i></a>
+          <a href="mailto:tahasohail85@gmail.com?subject=Web Development Service&body=Hi Taha! I need a website developed." class="service-link">
+            <span>Order Now</span>
+            <i class='bx bx-right-arrow-alt'></i>
+          </a>
+          <div class="service-hover-bg"></div>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
-      <h2 class="section-title">My <span>Projects</span></h2>
+      <h2 class="section-title" data-reveal="up">
+        <span class="title-decoration"></span>
+        My <span class="highlight">Projects</span>
+        <span class="title-decoration"></span>
+      </h2>
       <div class="projects-container">
         
         <!-- Project 1 -->
-        <div class="project-box">
+        <div class="project-box glass-card tilt-card" data-reveal="up" data-delay="0">
           <div class="project-img">
             <img src="project1.png" alt="SeaRoute Navigator">
+            <div class="project-overlay">
+              <a href="https://github.com/TahaSohail-Goat/SeaRoute-Navigator" target="_blank" rel="noopener" class="project-view-btn" title="View Project">
+                <i class='bx bx-link-external'></i>
+              </a>
+            </div>
           </div>
           <div class="project-info">
             <h3>SeaRoute Navigator</h3>
-            <p>A Data Structures project that implements efficient pathfinding algorithms to calculate optimal sea routes between ports, featuring graph-based navigation and shortest path optimization.</p>
+            <p>Efficient pathfinding algorithms for optimal sea routes between ports, featuring graph-based navigation and shortest path optimization.</p>
             <div class="project-tags">
               <span>C++</span>
               <span>DSA</span>
               <span>Graphs</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/TahaSohail-Goat/SeaRoute-Navigator" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
+              <a href="https://github.com/TahaSohail-Goat/SeaRoute-Navigator" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i> View Code</a>
             </div>
           </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="project-box">
+        <div class="project-box glass-card tilt-card" data-reveal="up" data-delay="100">
           <div class="project-img">
             <img src="project2.png" alt="Magical Pet Kingdom">
+            <div class="project-overlay">
+              <a href="https://github.com/TahaSohail-Goat/Magical-Pet-Kingdom-in-C-" target="_blank" rel="noopener" class="project-view-btn" title="View Project">
+                <i class='bx bx-link-external'></i>
+              </a>
+            </div>
           </div>
           <div class="project-info">
             <h3>Magical Pet Kingdom</h3>
-            <p>A university OOP project showcasing a fantasy pet management system built with C++. Demonstrates core object-oriented principles including inheritance, polymorphism, encapsulation, and abstraction.</p>
+            <p>Fantasy pet management system built with C++. Demonstrates inheritance, polymorphism, encapsulation, and abstraction.</p>
             <div class="project-tags">
               <span>C++</span>
               <span>OOP</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/TahaSohail-Goat/Magical-Pet-Kingdom-in-C-" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
+              <a href="https://github.com/TahaSohail-Goat/Magical-Pet-Kingdom-in-C-" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i> View Code</a>
             </div>
           </div>
         </div>
 
         <!-- Project 3 -->
-        <div class="project-box">
+        <div class="project-box glass-card tilt-card" data-reveal="up" data-delay="200">
           <div class="project-img">
             <img src="project3.png" alt="Tic-Tac-Toe SFML">
+            <div class="project-overlay">
+              <a href="https://github.com/TahaSohail-Goat/Tic-Tac-Toe-Using-Sfml" target="_blank" rel="noopener" class="project-view-btn" title="View Project">
+                <i class='bx bx-link-external'></i>
+              </a>
+            </div>
           </div>
           <div class="project-info">
             <h3>Tic-Tac-Toe SFML</h3>
-            <p>A fun side project built to enhance C++ fundamentals and learn SFML graphics library. Features a classic two-player Tic-Tac-Toe game with a clean graphical interface.</p>
+            <p>Classic two-player Tic-Tac-Toe game with a clean graphical interface built using C++ and SFML graphics library.</p>
             <div class="project-tags">
               <span>C++</span>
               <span>SFML</span>
               <span>Game Dev</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/TahaSohail-Goat/Tic-Tac-Toe-Using-Sfml" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
+              <a href="https://github.com/TahaSohail-Goat/Tic-Tac-Toe-Using-Sfml" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i> View Code</a>
             </div>
           </div>
         </div>
@@ -197,49 +417,128 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-      <h2 class="section-title">Contact <span>Me</span></h2>
+      <h2 class="section-title" data-reveal="up">
+        <span class="title-decoration"></span>
+        Contact <span class="highlight">Me</span>
+        <span class="title-decoration"></span>
+      </h2>
       <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class='bx bx-envelope'></i>
+        <div class="contact-info" data-reveal="left">
+          <div class="contact-header">
+            <h3>Let's Work Together</h3>
+            <p>Have a project in mind? Drop me a message and let's make it happen.</p>
+          </div>
+          <div class="contact-item glass-card">
+            <div class="contact-icon-box">
+              <i class='bx bx-envelope'></i>
+            </div>
             <div>
-              <h3>Email</h3>
+              <h4>Email</h4>
               <p>tahasohail85@gmail.com</p>
             </div>
           </div>
-          <div class="contact-item">
-            <i class='bx bx-phone'></i>
+          <div class="contact-item glass-card">
+            <div class="contact-icon-box">
+              <i class='bx bx-phone'></i>
+            </div>
             <div>
-              <h3>Phone</h3>
+              <h4>Phone</h4>
               <p>+92 332 8885770</p>
             </div>
           </div>
-          <div class="contact-item">
-            <i class='bx bx-map'></i>
+          <div class="contact-item glass-card">
+            <div class="contact-icon-box">
+              <i class='bx bx-map'></i>
+            </div>
             <div>
-              <h3>Location</h3>
+              <h4>Location</h4>
               <p>Pakistan</p>
             </div>
           </div>
-        </div>
-        <form class="contact-form" action="mailto:tahasohail85@gmail.com" method="POST" enctype="text/plain">
-          <div class="form-row">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
+          <div class="contact-socials">
+            <a href="https://github.com/TahaSohail-Goat" target="_blank" rel="noopener" title="GitHub" class="social-icon magnetic-btn"><i class='bx bxl-github'></i></a>
+            <a href="https://www.linkedin.com/in/taha-sohail-7b03b8320/" target="_blank" rel="noopener" title="LinkedIn" class="social-icon magnetic-btn"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://www.instagram.com/tahhaaaaaz/" target="_blank" rel="noopener" title="Instagram" class="social-icon magnetic-btn"><i class='bx bxl-instagram'></i></a>
+            <a href="https://wa.me/923328885770" target="_blank" rel="noopener" title="WhatsApp" class="social-icon magnetic-btn"><i class='bx bxl-whatsapp'></i></a>
           </div>
-          <input type="text" name="subject" placeholder="Subject" required>
-          <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-          <button type="submit" class="btn">Send Message <i class='bx bx-send'></i></button>
+        </div>
+        <form class="contact-form glass-card" data-reveal="right" action="mailto:tahasohail85@gmail.com" method="POST" enctype="text/plain">
+          <div class="form-row">
+            <div class="input-group">
+              <input type="text" name="name" id="name" required>
+              <label for="name">Your Name</label>
+              <span class="input-line"></span>
+            </div>
+            <div class="input-group">
+              <input type="email" name="email" id="email" required>
+              <label for="email">Your Email</label>
+              <span class="input-line"></span>
+            </div>
+          </div>
+          <div class="input-group">
+            <input type="text" name="subject" id="subject" required>
+            <label for="subject">Subject</label>
+            <span class="input-line"></span>
+          </div>
+          <div class="input-group">
+            <textarea name="message" id="message" rows="5" required></textarea>
+            <label for="message">Your Message</label>
+            <span class="input-line"></span>
+          </div>
+          <button type="submit" class="btn btn-primary magnetic-btn">
+            <span class="btn-content">Send Message <i class='bx bx-send'></i></span>
+            <span class="btn-glare"></span>
+          </button>
         </form>
       </div>
     </section>
 
+    <!-- Marquee Banner 2 -->
+    <div class="marquee-section marquee-cta">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>Let's Work Together</span><span class="marquee-dot">★</span>
+          <span>Available for Hire</span><span class="marquee-dot">★</span>
+          <span>Get In Touch</span><span class="marquee-dot">★</span>
+          <span>Start Your Project</span><span class="marquee-dot">★</span>
+          <span>Let's Work Together</span><span class="marquee-dot">★</span>
+          <span>Available for Hire</span><span class="marquee-dot">★</span>
+          <span>Get In Touch</span><span class="marquee-dot">★</span>
+          <span>Start Your Project</span><span class="marquee-dot">★</span>
+          <span>Let's Work Together</span><span class="marquee-dot">★</span>
+          <span>Available for Hire</span><span class="marquee-dot">★</span>
+          <span>Get In Touch</span><span class="marquee-dot">★</span>
+          <span>Start Your Project</span><span class="marquee-dot">★</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-content">
-        <h3>Ready to Get Started?</h3>
-        <p>Have a project in mind? Let's discuss your requirements — free consultation, fast turnaround, and quality guaranteed!</p>
-        <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-footer"><i class='bx bxl-whatsapp'></i> Message Me</a>
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">Taha<span>.</span></a>
+          <p>Building digital experiences that matter. Let's create something extraordinary together.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-cta">
+          <h4>Ready to Start?</h4>
+          <p>Free consultation, fast turnaround, and quality guaranteed!</p>
+          <a href="https://wa.me/923328885770?text=Hi%20Taha!%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="btn btn-primary magnetic-btn">
+            <span class="btn-content"><i class='bx bxl-whatsapp'></i> Let's Talk</span>
+            <span class="btn-glare"></span>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Taha Sohail. Crafted with <span class="heart">&hearts;</span> and lots of code.</p>
         <div class="footer-social">
           <a href="https://github.com/TahaSohail-Goat" target="_blank" rel="noopener" title="GitHub"><i class='bx bxl-github'></i></a>
           <a href="https://www.linkedin.com/in/taha-sohail-7b03b8320/" target="_blank" rel="noopener" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
@@ -247,85 +546,425 @@
           <a href="https://wa.me/923328885770" target="_blank" rel="noopener" title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Taha Sohail. All Rights Reserved.</p>
-      </div>
     </footer>
 
+    <!-- Back to Top -->
+    <a href="#home" class="back-to-top" id="backToTop" title="Back to Top">
+      <i class='bx bx-up-arrow-alt'></i>
+    </a>
+
     <script>
-      // Smooth scroll and active nav link
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-
-      // Navbar scroll effect
-      window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 100) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-
-        // Update active nav link
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.navbar ul li');
-        
-        sections.forEach((section, index) => {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            navLinks.forEach(li => li.classList.remove('active'));
-            navLinks[index].classList.add('active');
-          }
-        });
-      });
-
-      // Scroll reveal animation
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.about, .services, .projects, .contact, .service-box, .project-box, .contact-item').forEach(el => {
-        observer.observe(el);
-      });
-
-      // Dark/Light Mode Toggle
-      const themeToggle = document.querySelector('.theme-toggle');
-      const themeIcon = themeToggle.querySelector('i');
-      
-      // Check for saved theme preference
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        themeIcon.classList.replace('bx-moon', 'bx-sun');
+    // ===== SMOOTH SCROLL (Lenis-style) =====
+    class SmoothScroll {
+      constructor() {
+        this.current = window.scrollY;
+        this.target = window.scrollY;
+        this.ease = 0.08;
+        this.velocity = 0;
+        this.isSmooth = window.innerWidth > 768;
+        if (this.isSmooth) this.init();
       }
+      init() {
+        window.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          this.target += e.deltaY;
+          this.target = Math.max(0, Math.min(this.target, document.body.scrollHeight - window.innerHeight));
+        }, { passive: false });
+        this.animate();
+      }
+      animate() {
+        const prev = this.current;
+        this.current += (this.target - this.current) * this.ease;
+        this.velocity = this.current - prev;
+        window.scrollTo(0, this.current);
+        // Apply velocity-based skew to sections  
+        document.querySelectorAll('[data-reveal].revealed').forEach(el => {
+          el.style.transform = `skewY(${this.velocity * 0.03}deg)`;
+        });
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+    const smoothScroll = new SmoothScroll();
 
-      themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        
-        if (document.body.classList.contains('light-mode')) {
-          themeIcon.classList.replace('bx-moon', 'bx-sun');
-          localStorage.setItem('theme', 'light');
+    // ===== PRELOADER =====
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      setTimeout(() => {
+        preloader.classList.add('loaded');
+        document.body.classList.add('loaded');
+        // Trigger hero text split animation
+        splitTextAnimate();
+      }, 2400);
+    });
+
+    // ===== TEXT SPLIT ANIMATION =====
+    function splitTextAnimate() {
+      const heroTitle = document.querySelector('.glitch-text');
+      if (!heroTitle || heroTitle.dataset.split) return;
+      heroTitle.dataset.split = 'true';
+      const text = heroTitle.textContent;
+      heroTitle.innerHTML = '';
+      // Remove pseudo-element glitch when split is active
+      heroTitle.classList.add('split-active');
+      [...text].forEach((char, i) => {
+        const span = document.createElement('span');
+        span.className = 'split-char';
+        span.textContent = char === ' ' ? '\u00A0' : char;
+        span.style.animationDelay = `${2.6 + i * 0.04}s`;
+        heroTitle.appendChild(span);
+      });
+    }
+
+    // ===== CUSTOM CURSOR + SPOTLIGHT =====
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+    const spotlight = document.getElementById('cursorSpotlight');
+    let cursorX = 0, cursorY = 0, outlineX = 0, outlineY = 0;
+    let spotX = 0, spotY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+      cursorDot.style.left = cursorX + 'px';
+      cursorDot.style.top = cursorY + 'px';
+    });
+
+    function animateCursor() {
+      outlineX += (cursorX - outlineX) * 0.15;
+      outlineY += (cursorY - outlineY) * 0.15;
+      spotX += (cursorX - spotX) * 0.06;
+      spotY += (cursorY - spotY) * 0.06;
+      cursorOutline.style.left = outlineX + 'px';
+      cursorOutline.style.top = outlineY + 'px';
+      spotlight.style.left = spotX + 'px';
+      spotlight.style.top = spotY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .tilt-card, .magnetic-btn').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('cursor-hover');
+        cursorOutline.classList.add('cursor-hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('cursor-hover');
+        cursorOutline.classList.remove('cursor-hover');
+      });
+    });
+
+    // ===== INTERACTIVE PARTICLES (mouse-reactive) =====
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let particlesArr = [];
+    let mouseParticle = { x: -1000, y: -1000 };
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    document.addEventListener('mousemove', (e) => {
+      mouseParticle.x = e.clientX;
+      mouseParticle.y = e.clientY;
+    });
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.baseSize = Math.random() * 2 + 0.5;
+        this.size = this.baseSize;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.speedY = (Math.random() - 0.5) * 0.6;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.hue = Math.random() > 0.6 ? 160 : (Math.random() > 0.5 ? 320 : 195); // green, pink, or cyan
+      }
+      update() {
+        // Mouse repulsion
+        const dx = this.x - mouseParticle.x;
+        const dy = this.y - mouseParticle.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const force = (150 - dist) / 150;
+          this.x += (dx / dist) * force * 3;
+          this.y += (dy / dist) * force * 3;
+          this.size = this.baseSize + force * 3;
         } else {
-          themeIcon.classList.replace('bx-sun', 'bx-moon');
-          localStorage.setItem('theme', 'dark');
+          this.size += (this.baseSize - this.size) * 0.1;
+        }
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `hsla(${this.hue}, 90%, 60%, ${this.opacity})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 90; i++) particlesArr.push(new Particle());
+
+    function connectParticles() {
+      for (let i = 0; i < particlesArr.length; i++) {
+        for (let j = i + 1; j < particlesArr.length; j++) {
+          const dx = particlesArr[i].x - particlesArr[j].x;
+          const dy = particlesArr[i].y - particlesArr[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            const o = 0.12 * (1 - dist / 130);
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 255, 136, ${o})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particlesArr[i].x, particlesArr[i].y);
+            ctx.lineTo(particlesArr[j].x, particlesArr[j].y);
+            ctx.stroke();
+          }
+        }
+        // Connect to mouse
+        const dxm = particlesArr[i].x - mouseParticle.x;
+        const dym = particlesArr[i].y - mouseParticle.y;
+        const distm = Math.sqrt(dxm * dxm + dym * dym);
+        if (distm < 180) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0, 191, 255, ${0.25 * (1 - distm / 180)})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particlesArr[i].x, particlesArr[i].y);
+          ctx.lineTo(mouseParticle.x, mouseParticle.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particlesArr.forEach(p => { p.update(); p.draw(); });
+      connectParticles();
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ===== TYPEWRITER EFFECT =====
+    const typewriterEl = document.getElementById('typewriter');
+    const words = ['Software Developer', 'C++ Expert', 'Python Developer', 'Web Developer', 'Problem Solver'];
+    let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+    function typeWriter() {
+      const current = words[wordIndex];
+      typewriterEl.textContent = isDeleting
+        ? current.substring(0, --charIndex)
+        : current.substring(0, ++charIndex);
+      let delay = isDeleting ? 40 : 80;
+      if (!isDeleting && charIndex === current.length) { delay = 2200; isDeleting = true; }
+      else if (isDeleting && charIndex === 0) { isDeleting = false; wordIndex = (wordIndex + 1) % words.length; delay = 400; }
+      setTimeout(typeWriter, delay);
+    }
+    setTimeout(typeWriter, 3000);
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounters() {
+      document.querySelectorAll('[data-count]').forEach(counter => {
+        if (counter.dataset.animated) return;
+        counter.dataset.animated = 'true';
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000;
+        const start = performance.now();
+        function updateCounter(timestamp) {
+          const progress = Math.min((timestamp - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          counter.textContent = Math.floor(target * eased);
+          if (progress < 1) requestAnimationFrame(updateCounter);
+        }
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    // ===== SKILL BAR ANIMATION =====
+    function animateSkillBars() {
+      document.querySelectorAll('.skill-fill').forEach(bar => {
+        if (bar.dataset.animated) return;
+        bar.dataset.animated = 'true';
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width + '%';
+      });
+    }
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-delay') || 0;
+          setTimeout(() => entry.target.classList.add('revealed'), parseInt(delay));
+          if (entry.target.querySelector('[data-count]')) animateCounters();
+          if (entry.target.querySelector('.skill-fill')) animateSkillBars();
+          if (entry.target.closest('.about')) { animateCounters(); animateSkillBars(); }
         }
       });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+    // ===== TEXT HIGHLIGHT ON SCROLL =====
+    const textHighlightObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('text-visible');
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.about-text p, .hero-description, .contact-header p').forEach(el => {
+      el.classList.add('text-reveal-line');
+      textHighlightObserver.observe(el);
+    });
+
+    // ===== 3D TILT CARDS WITH GLOSS =====
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const rotateX = (y - 0.5) * -12;
+        const rotateY = (x - 0.5) * 12;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03,1.03,1.03)`;
+        // Gloss follow
+        card.style.setProperty('--gloss-x', `${x * 100}%`);
+        card.style.setProperty('--gloss-y', `${y * 100}%`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)';
+      });
+    });
+
+    // ===== MAGNETIC BUTTONS =====
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+
+    // ===== NAVBAR =====
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-menu ul li');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
+          navLinks.forEach(li => li.classList.remove('active'));
+          if (navLinks[index]) navLinks[index].classList.add('active');
+        }
+      });
+
+      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
+
+      document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500);
+
+      // Parallax speed for home image
+      const homeImg = document.querySelector('.home-img');
+      if (homeImg) homeImg.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+    });
+
+    // Smooth scroll links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          if (smoothScroll.isSmooth) {
+            smoothScroll.target = target.offsetTop;
+          } else {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          document.getElementById('mobile-menu').classList.remove('active');
+          document.getElementById('hamburger').classList.remove('active');
+        }
+      });
+    });
+
+    // ===== HAMBURGER MENU =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // ===== THEME TOGGLE =====
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeIcon.classList.replace('bx-moon', 'bx-sun');
+    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        themeIcon.classList.replace('bx-moon', 'bx-sun');
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.classList.replace('bx-sun', 'bx-moon');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // ===== FORM LABEL ANIMATION =====
+    document.querySelectorAll('.input-group input, .input-group textarea').forEach(input => {
+      input.addEventListener('focus', () => input.parentElement.classList.add('focused'));
+      input.addEventListener('blur', () => { if (!input.value) input.parentElement.classList.remove('focused'); });
+    });
+
+    // ===== PARALLAX SHAPES =====
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      document.querySelectorAll('.shape').forEach((shape, i) => {
+        const speed = (i + 1) * 15;
+        shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+      });
+    });
+
+    // ===== STAGGER NAV REVEAL =====
+    navLinks.forEach((li, i) => {
+      li.style.opacity = '0';
+      li.style.transform = 'translateY(-15px)';
+      setTimeout(() => {
+        li.style.transition = 'all 0.5s ease';
+        li.style.opacity = '1';
+        li.style.transform = 'translateY(0)';
+      }, 2600 + i * 100);
+    });
+
+    // ===== ANIMATED GRADIENT BORDERS =====
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
     </script>
   </body>
 </html>
