@@ -73,12 +73,15 @@ img { max-width: 100%; }
 /* ===== CUSTOM CURSOR ===== */
 .cursor-dot {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 8px;
   height: 8px;
   background: var(--primary);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
+  will-change: transform;
   transform: translate(-50%, -50%);
   transition: width 0.3s, height 0.3s, background 0.3s;
   box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.8), 0 0 30px rgba(var(--primary-rgb), 0.3);
@@ -86,12 +89,15 @@ img { max-width: 100%; }
 
 .cursor-outline {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 40px;
   height: 40px;
   border: 2px solid rgba(var(--primary-rgb), 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
+  will-change: transform;
   transform: translate(-50%, -50%);
   transition: width 0.3s, height 0.3s, border-color 0.3s;
   box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2), inset 0 0 15px rgba(var(--primary-rgb), 0.05);
@@ -210,12 +216,15 @@ img { max-width: 100%; }
 /* ===== CURSOR SPOTLIGHT ===== */
 .cursor-spotlight {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 600px;
   height: 600px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(var(--primary-rgb), 0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
+  will-change: transform;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease;
   mix-blend-mode: screen;
@@ -235,15 +244,17 @@ body.light-mode .cursor-spotlight {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .aurora-beam {
   position: absolute;
   width: 120%;
   height: 50%;
-  filter: blur(100px);
+  filter: blur(60px);
   opacity: 0.3;
+  will-change: transform;
+  contain: strict;
 }
 
 .aurora-1 {
@@ -289,6 +300,7 @@ body.light-mode .cursor-spotlight {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  will-change: contents;
 }
 
 /* ===== FLOATING SHAPES ===== */
@@ -299,13 +311,16 @@ body.light-mode .cursor-spotlight {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  contain: strict;
 }
 
 .shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(50px);
   opacity: 0.07;
+  will-change: transform;
+  contain: strict;
   transition: transform 0.3s ease-out;
 }
 
@@ -352,12 +367,7 @@ body.light-mode .cursor-spotlight {
   );
   pointer-events: none;
   z-index: 1;
-  animation: scanlines 0.1s linear infinite;
-}
-
-@keyframes scanlines {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
+  /* Removed scanline animation - it was causing constant repaints */
 }
 
 /* ===== MARQUEE BANNER ===== */
@@ -472,8 +482,6 @@ body.light-mode .cursor-spotlight {
   width: 56px;
   height: 56px;
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--primary-rgb), 0.2);
   border-radius: 6px;
   display: flex;
@@ -548,6 +556,7 @@ body.light-mode .cursor-spotlight {
   z-index: 1;
   opacity: 0;
   transition: opacity 0.3s ease;
+  will-change: opacity;
 }
 
 .tilt-card:hover::before {
@@ -588,17 +597,9 @@ body.light-mode .cursor-spotlight {
   left: 0;
   height: 3px;
   width: 0;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary), var(--neon-yellow), var(--primary));
-  background-size: 400% 100%;
-  animation: rgbShift 4s linear infinite;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
   z-index: 10001;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.6), 0 0 30px rgba(var(--primary-rgb), 0.2);
-}
-
-@keyframes rgbShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 400% 50%; }
+  will-change: width;
 }
 
 /* ===== NAVBAR ===== */
@@ -618,10 +619,10 @@ body.light-mode .cursor-spotlight {
 .navbar.scrolled {
   padding: 12px 6%;
   background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -784,12 +785,13 @@ body.light-mode .cursor-spotlight {
 /* ===== GLASSMORPHISM CARD ===== */
 .glass-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
   border: 1px solid var(--glass-border);
   border-radius: 6px;
   transition: all 0.5s ease;
   position: relative;
+  contain: layout style;
 }
 
 .glass-card::before {
@@ -1179,8 +1181,9 @@ body.light-mode .cursor-spotlight {
     var(--primary) 360deg
   );
   animation: rotateBorder 6s linear infinite;
-  filter: blur(40px);
+  filter: blur(25px);
   opacity: 0.25;
+  will-change: transform;
 }
 
 @keyframes rotateBorder {
