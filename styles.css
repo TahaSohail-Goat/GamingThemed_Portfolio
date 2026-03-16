@@ -16,13 +16,13 @@
   --accent: #00bfff;
   --neon-pink: #ff2d95;
   --neon-yellow: #ffe600;
-  --bg: #050508;
-  --bg-2: #0a0a12;
-  --bg-3: #0f0f1e;
+  --bg: #030308;
+  --bg-2: #080810;
+  --bg-3: #0c0c1a;
   --text: #e8eaf0;
   --text-muted: #7a7a95;
-  --glass-bg: rgba(8, 8, 18, 0.75);
-  --glass-border: rgba(0, 255, 136, 0.1);
+  --glass-bg: rgba(6, 6, 14, 0.8);
+  --glass-border: rgba(0, 255, 136, 0.08);
   --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --font-main: 'Rajdhani', sans-serif;
   --font-heading: 'Orbitron', sans-serif;
@@ -234,7 +234,7 @@ body.light-mode .cursor-spotlight {
   background: radial-gradient(circle, rgba(var(--primary-rgb), 0.06) 0%, transparent 70%);
 }
 
-/* ===== AURORA BACKGROUND ===== */
+/* ===== AURORA BACKGROUND (Static Glow Blobs — AIFiesta Style) ===== */
 .aurora {
   position: fixed;
   top: 0;
@@ -244,55 +244,41 @@ body.light-mode .cursor-spotlight {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.3;
 }
 
 .aurora-beam {
   position: absolute;
-  width: 120%;
-  height: 50%;
-  filter: blur(60px);
-  opacity: 0.3;
-  will-change: transform;
-  contain: strict;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 1;
 }
 
 .aurora-1 {
-  top: -20%;
-  left: -10%;
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), transparent 60%);
-  animation: auroraMove1 12s ease-in-out infinite alternate;
+  top: -15%;
+  left: -5%;
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 180, 150, 0.12) 0%, transparent 70%);
 }
 
 .aurora-2 {
-  top: 30%;
-  right: -20%;
-  background: linear-gradient(225deg, rgba(0, 191, 255, 0.12), transparent 60%);
-  animation: auroraMove2 15s ease-in-out infinite alternate;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(ellipse, rgba(0, 100, 255, 0.08) 0%, transparent 70%);
 }
 
 .aurora-3 {
-  bottom: -10%;
-  left: 20%;
-  background: linear-gradient(45deg, rgba(255, 0, 85, 0.1), transparent 50%);
-  animation: auroraMove3 18s ease-in-out infinite alternate;
+  bottom: 10%;
+  left: 30%;
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 200, 120, 0.06) 0%, transparent 70%);
 }
 
-@keyframes auroraMove1 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  100% { transform: translate(5%, 10%) rotate(5deg) scale(1.1); }
-}
-@keyframes auroraMove2 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  100% { transform: translate(-8%, -5%) rotate(-3deg) scale(1.15); }
-}
-@keyframes auroraMove3 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  100% { transform: translate(3%, -8%) rotate(4deg) scale(1.05); }
-}
-
-/* ===== PARTICLE CANVAS ===== */
-#particles-canvas {
+/* ===== DOT GRID PATTERN (AIFiesta Style) ===== */
+.dot-grid {
   position: fixed;
   top: 0;
   left: 0;
@@ -300,45 +286,115 @@ body.light-mode .cursor-spotlight {
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  will-change: contents;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* ===== FLOATING SHAPES ===== */
-.floating-shapes {
+body.light-mode .dot-grid {
+  background-image:
+    radial-gradient(circle, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* ===== CSS STARFIELD (Replaces Canvas Particles) ===== */
+.starfield {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  contain: strict;
 }
 
-.shape {
+.starfield::before,
+.starfield::after {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  filter: blur(50px);
-  opacity: 0.07;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
   will-change: transform;
-  contain: strict;
-  transition: transform 0.3s ease-out;
 }
 
-.shape-1 { width: 400px; height: 400px; background: var(--primary); top: 10%; left: 5%; animation: floatShape 20s infinite ease-in-out; }
-.shape-2 { width: 300px; height: 300px; background: var(--secondary); top: 60%; right: 10%; animation: floatShape 25s infinite ease-in-out reverse; }
-.shape-3 { width: 200px; height: 200px; background: var(--accent); top: 30%; right: 30%; animation: floatShape 18s infinite ease-in-out 2s; }
-.shape-4 { width: 350px; height: 350px; background: var(--neon-pink); bottom: 10%; left: 20%; animation: floatShape 22s infinite ease-in-out 4s; }
-.shape-5 { width: 250px; height: 250px; background: var(--neon-yellow); top: 50%; left: 50%; animation: floatShape 30s infinite ease-in-out 1s; }
-.shape-6 { width: 180px; height: 180px; background: var(--accent); bottom: 30%; right: 5%; animation: floatShape 28s infinite ease-in-out 3s; }
-
-@keyframes floatShape {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -50px) scale(1.1); }
-  50% { transform: translate(-20px, 30px) scale(0.9); }
-  75% { transform: translate(40px, 20px) scale(1.05); }
+.starfield::before {
+  background: transparent;
+  box-shadow:
+    120px 80px 0 0.3px rgba(255,255,255,0.6),
+    340px 200px 0 0.4px rgba(255,255,255,0.5),
+    780px 120px 0 0.2px rgba(255,255,255,0.7),
+    1020px 340px 0 0.5px rgba(255,255,255,0.4),
+    150px 560px 0 0.3px rgba(255,255,255,0.6),
+    520px 450px 0 0.2px rgba(255,255,255,0.5),
+    890px 600px 0 0.4px rgba(255,255,255,0.3),
+    1200px 180px 0 0.3px rgba(255,255,255,0.6),
+    60px 300px 0 0.5px rgba(255,255,255,0.4),
+    430px 680px 0 0.2px rgba(255,255,255,0.7),
+    720px 350px 0 0.3px rgba(255,255,255,0.5),
+    1100px 520px 0 0.4px rgba(255,255,255,0.3),
+    260px 720px 0 0.2px rgba(255,255,255,0.6),
+    950px 90px 0 0.5px rgba(255,255,255,0.4),
+    180px 150px 0 0.3px rgba(255,255,255,0.5),
+    610px 280px 0 0.4px rgba(255,255,255,0.6),
+    1300px 450px 0 0.2px rgba(255,255,255,0.5),
+    80px 500px 0 0.5px rgba(255,255,255,0.3),
+    500px 100px 0 0.3px rgba(255,255,255,0.7),
+    850px 480px 0 0.4px rgba(255,255,255,0.4),
+    1150px 650px 0 0.2px rgba(255,255,255,0.6),
+    310px 380px 0 0.5px rgba(255,255,255,0.3),
+    670px 550px 0 0.3px rgba(255,255,255,0.5),
+    1050px 200px 0 0.4px rgba(255,255,255,0.4),
+    400px 750px 0 0.2px rgba(255,255,255,0.7),
+    200px 420px 0 0.3px rgba(255,255,255,0.5),
+    760px 700px 0 0.5px rgba(255,255,255,0.3),
+    1250px 300px 0 0.2px rgba(255,255,255,0.6),
+    550px 620px 0 0.4px rgba(255,255,255,0.4),
+    920px 250px 0 0.3px rgba(255,255,255,0.5);
+  animation: starDrift 90s linear infinite;
 }
 
-/* ===== NOISE OVERLAY + SCANLINES ===== */
+.starfield::after {
+  background: transparent;
+  box-shadow:
+    200px 150px 0 0.4px rgba(255,255,255,0.4),
+    450px 350px 0 0.3px rgba(255,255,255,0.6),
+    700px 50px 0 0.5px rgba(255,255,255,0.3),
+    1000px 500px 0 0.2px rgba(255,255,255,0.7),
+    100px 650px 0 0.4px rgba(255,255,255,0.4),
+    580px 180px 0 0.3px rgba(255,255,255,0.5),
+    830px 420px 0 0.5px rgba(255,255,255,0.3),
+    1180px 100px 0 0.2px rgba(255,255,255,0.6),
+    350px 520px 0 0.4px rgba(255,255,255,0.5),
+    650px 700px 0 0.3px rgba(255,255,255,0.4),
+    980px 300px 0 0.5px rgba(255,255,255,0.3),
+    40px 400px 0 0.2px rgba(255,255,255,0.7),
+    480px 580px 0 0.4px rgba(255,255,255,0.5),
+    1100px 680px 0 0.3px rgba(255,255,255,0.4),
+    280px 250px 0 0.5px rgba(255,255,255,0.6),
+    750px 160px 0 0.2px rgba(255,255,255,0.5),
+    1050px 600px 0 0.4px rgba(255,255,255,0.3),
+    160px 750px 0 0.3px rgba(255,255,255,0.7),
+    600px 400px 0 0.5px rgba(255,255,255,0.4),
+    900px 550px 0 0.2px rgba(255,255,255,0.5);
+  animation: starDrift 120s linear infinite;
+  animation-delay: -30s;
+}
+
+@keyframes starDrift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+body.light-mode .starfield { opacity: 0; }
+
+/* ===== FLOATING SHAPES (Hidden — replaced by static aurora) ===== */
+.floating-shapes {
+  display: none;
+}
+
+/* ===== NOISE/GRAIN OVERLAY (Subtle, one layer) ===== */
 .noise-overlay {
   position: fixed;
   top: 0;
@@ -347,27 +403,8 @@ body.light-mode .cursor-spotlight {
   height: 100%;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-.noise-overlay::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
-  pointer-events: none;
-  z-index: 1;
-  /* Removed scanline animation - it was causing constant repaints */
 }
 
 /* ===== MARQUEE BANNER ===== */
@@ -397,6 +434,7 @@ body.light-mode .cursor-spotlight {
   gap: 40px;
   animation: marqueeScroll 30s linear infinite;
   padding-right: 40px;
+  will-change: transform;
 }
 
 .marquee-reverse .marquee-content {
@@ -821,6 +859,7 @@ body.light-mode .cursor-spotlight {
 [data-reveal] {
   opacity: 0;
   transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+  will-change: transform, opacity;
 }
 
 [data-reveal="left"] { transform: translateX(-80px); }
@@ -914,53 +953,9 @@ body.light-mode .cursor-spotlight {
   filter: drop-shadow(0 0 30px rgba(var(--primary-rgb), 0.3));
 }
 
-/* Glitch Effect */
+/* Glitch Effect — Removed for smoothness (was causing constant clip-path recalculations) */
 .glitch-text {
   position: relative;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ffffff 20%, var(--primary) 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glitch-text::before {
-  animation: glitch1 3s infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  text-shadow: -2px 0 var(--secondary);
-}
-
-.glitch-text::after {
-  animation: glitch2 3s infinite;
-  clip-path: polygon(0 66%, 100% 66%, 100% 100%, 0 100%);
-  text-shadow: 2px 0 var(--accent);
-}
-
-@keyframes glitch1 {
-  0%, 85%, 100% { transform: translate(0); }
-  86% { transform: translate(-5px, 2px); }
-  88% { transform: translate(5px, -2px); }
-  90% { transform: translate(-3px, 1px); }
-  92% { transform: translate(4px, -1px) skewX(2deg); }
-  94% { transform: translate(-2px, 3px); }
-}
-
-@keyframes glitch2 {
-  0%, 85%, 100% { transform: translate(0); }
-  87% { transform: translate(5px, 2px); }
-  89% { transform: translate(-5px, -1px); }
-  91% { transform: translate(3px, 1px) skewX(-2deg); }
-  93% { transform: translate(-4px, -2px); }
-  95% { transform: translate(2px, 3px); }
 }
 
 @keyframes heroNameIn {
@@ -1461,6 +1456,7 @@ section {
   border-radius: 3px;
   transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
+  will-change: width;
 }
 
 .skill-fill::after {
@@ -2159,6 +2155,12 @@ body.light-mode .project-overlay {
   .contact-form { padding: 24px; }
 
   .cursor-dot, .cursor-outline, .cursor-spotlight { display: none; }
+
+  /* Lighter backdrop-filter on mobile for performance */
+  .glass-card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
 
   .marquee-cta .marquee-content span { font-size: 22px; }
 

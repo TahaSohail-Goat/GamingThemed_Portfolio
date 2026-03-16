@@ -26,15 +26,11 @@
       </div>
     </div>
 
-    <!-- Particle Canvas -->
-    <canvas id="particles-canvas"></canvas>
+    <!-- CSS Starfield (replaces canvas particles) -->
+    <div class="starfield"></div>
 
-    <!-- Floating Geometric Shapes -->
-    <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-    </div>
+    <!-- Dot Grid Pattern -->
+    <div class="dot-grid"></div>
 
     <!-- Noise Overlay -->
     <div class="noise-overlay"></div>
@@ -42,7 +38,7 @@
     <!-- Cursor Spotlight -->
     <div class="cursor-spotlight" id="cursorSpotlight"></div>
 
-    <!-- Aurora Background -->
+    <!-- Aurora Glow Blobs -->
     <div class="aurora">
       <div class="aurora-beam aurora-1"></div>
       <div class="aurora-beam aurora-2"></div>
@@ -580,26 +576,30 @@
       });
     }
 
+    // ===== SHARED MOUSE COORDINATES =====
+    let mouseX = 0, mouseY = 0;
+
+    // Single consolidated mousemove handler
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
     // ===== CUSTOM CURSOR + SPOTLIGHT =====
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
     const spotlight = document.getElementById('cursorSpotlight');
-    let cursorX = 0, cursorY = 0, outlineX = 0, outlineY = 0;
+    let outlineX = 0, outlineY = 0;
     let spotX = 0, spotY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-      cursorX = e.clientX;
-      cursorY = e.clientY;
-    });
-
     function animateCursor() {
-      outlineX += (cursorX - outlineX) * 0.15;
-      outlineY += (cursorY - outlineY) * 0.15;
-      spotX += (cursorX - spotX) * 0.06;
-      spotY += (cursorY - spotY) * 0.06;
-      cursorDot.style.transform = `translate(${cursorX - 4}px, ${cursorY - 4}px)`;
-      cursorOutline.style.transform = `translate(${outlineX - 20}px, ${outlineY - 20}px)`;
-      spotlight.style.transform = `translate(${spotX - 300}px, ${spotY - 300}px)`;
+      outlineX += (mouseX - outlineX) * 0.15;
+      outlineY += (mouseY - outlineY) * 0.15;
+      spotX += (mouseX - spotX) * 0.06;
+      spotY += (mouseY - spotY) * 0.06;
+      cursorDot.style.transform = `translate3d(${mouseX - 4}px, ${mouseY - 4}px, 0)`;
+      cursorOutline.style.transform = `translate3d(${outlineX - 20}px, ${outlineY - 20}px, 0)`;
+      spotlight.style.transform = `translate3d(${spotX - 300}px, ${spotY - 300}px, 0)`;
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
@@ -615,72 +615,7 @@
       });
     });
 
-    // ===== INTERACTIVE PARTICLES (mouse-reactive) =====
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let particlesArr = [];
-    let mouseParticle = { x: -1000, y: -1000 };
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    document.addEventListener('mousemove', (e) => {
-      mouseParticle.x = e.clientX;
-      mouseParticle.y = e.clientY;
-    });
-
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.baseSize = Math.random() * 2 + 0.5;
-        this.size = this.baseSize;
-        this.speedX = (Math.random() - 0.5) * 0.6;
-        this.speedY = (Math.random() - 0.5) * 0.6;
-        this.opacity = Math.random() * 0.5 + 0.1;
-        this.hue = Math.random() > 0.6 ? 160 : (Math.random() > 0.5 ? 320 : 195);
-      }
-      update() {
-        const dx = this.x - mouseParticle.x;
-        const dy = this.y - mouseParticle.y;
-        const distSq = dx * dx + dy * dy;
-        if (distSq < 22500) { // 150*150
-          const dist = Math.sqrt(distSq);
-          const force = (150 - dist) / 150;
-          this.x += (dx / dist) * force * 3;
-          this.y += (dy / dist) * force * 3;
-          this.size = this.baseSize + force * 3;
-        } else {
-          this.size += (this.baseSize - this.size) * 0.1;
-        }
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${this.hue}, 90%, 60%, ${this.opacity})`;
-        ctx.fill();
-      }
-    }
-
-    // Reduced particle count for better performance
-    const particleCount = window.innerWidth > 768 ? 35 : 15;
-    for (let i = 0; i < particleCount; i++) particlesArr.push(new Particle());
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArr.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
+    // (Canvas particles removed — replaced by CSS starfield for better performance)
 
     // ===== TYPEWRITER EFFECT =====
     const typewriterEl = document.getElementById('typewriter');
@@ -762,11 +697,13 @@
           const y = (e.clientY - rect.top) / rect.height;
           const rotateX = (y - 0.5) * -8;
           const rotateY = (x - 0.5) * 8;
+          card.style.transition = 'transform 0.1s ease';
           card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
           card.style.setProperty('--gloss-x', `${x * 100}%`);
           card.style.setProperty('--gloss-y', `${y * 100}%`);
         });
         card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
           card.style.transform = '';
         });
       });
@@ -779,9 +716,11 @@
           const rect = btn.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
-          btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+          btn.style.transition = 'transform 0.15s ease';
+          btn.style.transform = `translate3d(${x * 0.25}px, ${y * 0.25}px, 0)`;
         });
         btn.addEventListener('mouseleave', () => {
+          btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
           btn.style.transform = '';
         });
       });
@@ -812,21 +751,26 @@
           document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500);
 
           const homeImg = document.querySelector('.home-img');
-          if (homeImg) homeImg.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+          if (homeImg) homeImg.style.transform = `translate3d(0, ${window.scrollY * 0.12}px, 0)`;
 
           scrollTicking = false;
         });
         scrollTicking = true;
       }
-    });
+    }, { passive: true });
 
-    // Smooth scroll links
+    // Smooth scroll links — leverage native CSS scroll-behavior: smooth
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const target = document.querySelector(href);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          e.preventDefault();
+          // Use native scrollTo for smoother, more consistent scrolling
+          const top = target.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top, behavior: 'smooth' });
+          // Update URL hash without scrolling
+          history.pushState(null, null, href);
           document.getElementById('mobile-menu').classList.remove('active');
           document.getElementById('hamburger').classList.remove('active');
         }
@@ -873,22 +817,7 @@
     });
 
     // ===== PARALLAX SHAPES =====
-    let shapeRafId = null;
-    let shapeX = 0, shapeY = 0;
-    const shapeEls = document.querySelectorAll('.shape');
-    document.addEventListener('mousemove', (e) => {
-      shapeX = (e.clientX / window.innerWidth - 0.5) * 2;
-      shapeY = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (!shapeRafId) {
-        shapeRafId = requestAnimationFrame(() => {
-          shapeEls.forEach((shape, i) => {
-            const speed = (i + 1) * 15;
-            shape.style.transform = `translate(${shapeX * speed}px, ${shapeY * speed}px)`;
-          });
-          shapeRafId = null;
-        });
-      }
-    });
+    // (Removed — floating shapes replaced by CSS aurora globs)
 
     // ===== STAGGER NAV REVEAL =====
     navLinks.forEach((li, i) => {
@@ -910,7 +839,7 @@
           const y = e.clientY - rect.top;
           card.style.setProperty('--mouse-x', `${x}px`);
           card.style.setProperty('--mouse-y', `${y}px`);
-        });
+        }, { passive: true });
       });
     }
     </script>
