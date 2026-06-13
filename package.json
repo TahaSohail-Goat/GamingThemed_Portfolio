@@ -1,0 +1,21 @@
+{
+  "name": "gamingthemed_portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive personal portfolio website showcasing software development skills and services.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TahaSohail-Goat/GamingThemed_Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TahaSohail-Goat/GamingThemed_Portfolio/issues"
+  },
+  "homepage": "https://github.com/TahaSohail-Goat/GamingThemed_Portfolio#readme"
+}

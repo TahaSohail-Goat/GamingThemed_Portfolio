@@ -70,6 +70,33 @@ body:not(.loaded) {
 a { color: var(--text); text-decoration: none; cursor: none; }
 img { max-width: 100%; }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  background: var(--primary);
+  color: #000;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-weight: 700;
+  z-index: 10002;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
 /* ===== CUSTOM CURSOR ===== */
 .cursor-dot {
   position: fixed;
@@ -769,6 +796,9 @@ body.light-mode .starfield { opacity: 0; }
   flex-direction: column;
   gap: 6px;
   cursor: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
   z-index: 1001;
 }
 
@@ -1911,6 +1941,20 @@ section {
 }
 
 .contact-form .btn { align-self: flex-start; }
+
+.form-status {
+  min-height: 22px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.form-status.success {
+  color: var(--primary);
+}
+
+.form-status.error {
+  color: var(--secondary);
+}
 
 /* ===== FOOTER ===== */
 .footer {

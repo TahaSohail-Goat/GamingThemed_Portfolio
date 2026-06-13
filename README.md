@@ -15,6 +15,7 @@ A modern, responsive personal portfolio website showcasing software development 
 Portfolio/
 ├── index.html      # Main HTML structure
 ├── styles.css      # Complete styling with animations
+├── script.js       # Portfolio interactions and animations
 ├── image.jpeg      # Profile image
 ├── project1.png    # SeaRoute Navigator project image
 ├── project2.png    # Magical Pet Kingdom project image
@@ -53,6 +54,18 @@ Portfolio/
 1. Clone or download the repository
 2. Open `index.html` in a web browser
 3. No build process required - pure HTML, CSS, and JavaScript
+
+## 📨 Contact Form Delivery
+
+The contact form is integrated with **FormSubmit** for real message delivery:
+- Endpoint: `https://formsubmit.co/ajax/tahasohail85@gmail.com`
+- Client-side validation for required fields
+- Inline success/error feedback after submission
+
+## 🖼️ Image Optimization Notes
+
+- Convert large PNG/JPEG assets to WebP where possible to reduce payload size.
+- Provide responsive image variants and use `srcset` for project thumbnails on future updates.
 
 ## 📞 Contact Information
 
